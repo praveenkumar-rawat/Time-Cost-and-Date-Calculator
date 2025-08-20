@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date, Age & Time Calculator - Professional Calculator Suite</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Professional date, age, and time calculator with real-time calculations, duration analysis, and comprehensive time calculations.">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">Date & Time Calculator Suite</h1>
+            <p class="header__subtitle">Professional calculators for all your date and time needs</p>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="container">
+            <div class="nav__tabs">
+                <button class="nav__tab nav__tab--active" data-tab="age">
+                    <span class="nav__tab-icon">🎂</span>
+                    Age Calculator
+                </button>
+                <button class="nav__tab" data-tab="date">
+                    <span class="nav__tab-icon">📅</span>
+                    Date Calculator
+                </button>
+                <button class="nav__tab" data-tab="time">
+                    <span class="nav__tab-icon">⏰</span>
+                    Time Calculator
+                </button>
+                <button class="nav__tab" data-tab="duration">
+                    <span class="nav__tab-icon">📊</span>
+                    Duration Calculator
+                </button>
+                <button class="nav__tab" data-tab="price">
+                    <span class="nav__tab-icon">💸</span>
+                    Price Calculator
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main">
+        <div class="container">
+            <!-- Age Calculator -->
+            <section class="calculator calculator--active" id="age-calculator">
+                <div class="calculator__header">
+                    <h2>Age Calculator</h2>
+                    <p>Calculate your exact age in years, months, days, and more</p>
+                </div>
+                
+                <div class="calculator__content">
+                    <div class="input-group">
+                        <label class="form-label" for="birth-date">Birth Date</label>
+                        <input type="date" id="birth-date" class="form-control" max="">
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h3>Your Age</h3>
+                            <div class="age-display">
+                                <div class="age-main">
+                                    <span id="age-years">0</span> years,
+                                    <span id="age-months">0</span> months,
+                                    <span id="age-days">0</span> days
+                                </div>
+                                <div class="age-detailed">
+                                    <div class="age-item">
+                                        <span class="age-value" id="total-days">0</span>
+                                        <span class="age-unit">Total Days</span>
+                                    </div>
+                                    <div class="age-item">
+                                        <span class="age-value" id="total-hours">0</span>
+                                        <span class="age-unit">Total Hours</span>
+                                    </div>
+                                    <div class="age-item">
+                                        <span class="age-value" id="total-minutes">0</span>
+                                        <span class="age-unit">Total Minutes</span>
+                                    </div>
+                                    <div class="age-item">
+                                        <span class="age-value" id="total-seconds">0</span>
+                                        <span class="age-unit">Total Seconds</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-card">
+                            <h3>Additional Info</h3>
+                            <div class="info-items">
+                                <div class="info-item">
+                                    <span class="info-label">Day of Birth:</span>
+                                    <span class="info-value" id="birth-day">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Next Birthday:</span>
+                                    <span class="info-value" id="next-birthday">-</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">Days Until Birthday:</span>
+                                    <span class="info-value" id="days-until">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="actions">
+                        <button class="btn btn--primary" onclick="copyResults('age')">Copy Results</button>
+                        <button class="btn btn--secondary" onclick="clearCalculator('age')">Clear</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Date Calculator -->
+            <section class="calculator" id="date-calculator">
+                <div class="calculator__header">
+                    <h2>Date Calculator</h2>
+                    <p>Calculate differences between dates or add/subtract time periods</p>
+                </div>
+                
+                <div class="calculator__content">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="form-label" for="start-date">Start Date</label>
+                            <input type="date" id="start-date" class="form-control">
+                        </div>
+                        <div class="input-group">
+                            <label class="form-label" for="end-date">End Date</label>
+                            <input type="date" id="end-date" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h3>Date Difference</h3>
+                            <div class="date-difference">
+                                <div class="diff-main">
+                                    <span id="diff-years">0</span> years,
+                                    <span id="diff-months">0</span> months,
+                                    <span id="diff-days">0</span> days
+                                </div>
+                                <div class="diff-detailed">
+                                    <div class="diff-item">
+                                        <span class="diff-value" id="diff-total-days">0</span>
+                                        <span class="diff-unit">Total Days</span>
+                                    </div>
+                                    <div class="diff-item">
+                                        <span class="diff-value" id="diff-business-days">0</span>
+                                        <span class="diff-unit">Business Days</span>
+                                    </div>
+                                    <div class="diff-item">
+                                        <span class="diff-value" id="diff-weeks">0</span>
+                                        <span class="diff-unit">Weeks</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="result-card">
+                            <h3>Add/Subtract Days</h3>
+                            <div class="date-math">
+                                <div class="input-group">
+                                    <label class="form-label" for="base-date">Base Date</label>
+                                    <input type="date" id="base-date" class="form-control">
+                                </div>
+                                <div class="input-row">
+                                    <div class="input-group">
+                                        <label class="form-label" for="add-days">Days to Add/Subtract</label>
+                                        <input type="number" id="add-days" class="form-control" placeholder="Enter days (negative to subtract)">
+                                    </div>
+                                    <button class="btn btn--primary" onclick="calculateDateMath()">Calculate</button>
+                                </div>
+                                <div class="result-display">
+                                    <span class="result-label">Result:</span>
+                                    <span class="result-value" id="date-math-result">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="actions">
+                        <button class="btn btn--primary" onclick="copyResults('date')">Copy Results</button>
+                        <button class="btn btn--secondary" onclick="clearCalculator('date')">Clear</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Time Calculator -->
+            <section class="calculator" id="time-calculator">
+                <div class="calculator__header">
+                    <h2>Time Calculator</h2>
+                    <p>Add, subtract, or calculate time differences</p>
+                </div>
+                
+                <div class="calculator__content">
+                    <div class="time-operations">
+                        <div class="operation-section">
+                            <h3>Time Addition/Subtraction</h3>
+                            <div class="time-inputs">
+                                <div class="time-input-group">
+                                    <label class="form-label">Time 1</label>
+                                    <div class="time-fields">
+                                        <input type="number" id="time1-hours" class="form-control time-field" placeholder="Hours" min="0">
+                                        <span class="time-separator">:</span>
+                                        <input type="number" id="time1-minutes" class="form-control time-field" placeholder="Minutes" min="0" max="59">
+                                        <span class="time-separator">:</span>
+                                        <input type="number" id="time1-seconds" class="form-control time-field" placeholder="Seconds" min="0" max="59">
+                                    </div>
+                                </div>
+                                
+                                <div class="operation-controls">
+                                    <button class="btn btn--outline operation-btn" data-operation="add">+</button>
+                                    <button class="btn btn--outline operation-btn" data-operation="subtract">-</button>
+                                </div>
+                                
+                                <div class="time-input-group">
+                                    <label class="form-label">Time 2</label>
+                                    <div class="time-fields">
+                                        <input type="number" id="time2-hours" class="form-control time-field" placeholder="Hours" min="0">
+                                        <span class="time-separator">:</span>
+                                        <input type="number" id="time2-minutes" class="form-control time-field" placeholder="Minutes" min="0" max="59">
+                                        <span class="time-separator">:</span>
+                                        <input type="number" id="time2-seconds" class="form-control time-field" placeholder="Seconds" min="0" max="59">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="time-result">
+                                <h4>Result:</h4>
+                                <div class="time-display" id="time-operation-result">00:00:00</div>
+                            </div>
+                        </div>
+                        
+                        <div class="operation-section">
+                            <h3>Time Between Two Times</h3>
+                            <div class="time-inputs">
+                                <div class="time-input-group">
+                                    <label class="form-label">Start Time</label>
+                                    <input type="time" id="start-time" class="form-control">
+                                </div>
+                                <div class="time-input-group">
+                                    <label class="form-label">End Time</label>
+                                    <input type="time" id="end-time" class="form-control">
+                                </div>
+                            </div>
+                            
+                            <div class="time-result">
+                                <h4>Duration:</h4>
+                                <div class="time-display" id="time-duration-result">00:00:00</div>
+                                <div class="time-breakdown">
+                                    <div class="time-item">
+                                        <span class="time-value" id="duration-hours">0</span>
+                                        <span class="time-unit">Hours</span>
+                                    </div>
+                                    <div class="time-item">
+                                        <span class="time-value" id="duration-minutes">0</span>
+                                        <span class="time-unit">Minutes</span>
+                                    </div>
+                                    <div class="time-item">
+                                        <span class="time-value" id="duration-seconds">0</span>
+                                        <span class="time-unit">Seconds</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="actions">
+                        <button class="btn btn--primary" onclick="copyResults('time')">Copy Results</button>
+                        <button class="btn btn--secondary" onclick="clearCalculator('time')">Clear</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Duration Calculator -->
+            <section class="calculator" id="duration-calculator">
+                <div class="calculator__header">
+                    <h2>Duration Calculator</h2>
+                    <p>Calculate detailed duration between two dates with comprehensive breakdown</p>
+                </div>
+                
+                <div class="calculator__content">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="form-label" for="duration-start">Start Date & Time</label>
+                            <input type="datetime-local" id="duration-start" class="form-control">
+                        </div>
+                        <div class="input-group">
+                            <label class="form-label" for="duration-end">End Date & Time</label>
+                            <input type="datetime-local" id="duration-end" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="results-grid">
+                        <div class="result-card full-width">
+                            <h3>Comprehensive Duration Analysis</h3>
+                            <div class="duration-breakdown">
+                                <div class="duration-main">
+                                    <div class="duration-large">
+                                        <span id="duration-years">0</span> years,
+                                        <span id="duration-months">0</span> months,
+                                        <span id="duration-weeks">0</span> weeks,
+                                        <span id="duration-days">0</span> days
+                                    </div>
+                                    <div class="duration-time">
+                                        <span id="duration-hours">0</span> hours,
+                                        <span id="duration-minutes">0</span> minutes,
+                                        <span id="duration-seconds">0</span> seconds
+                                    </div>
+                                </div>
+                                
+                                <div class="duration-totals">
+                                    <div class="duration-total-item">
+                                        <span class="duration-total-value" id="duration-total-days">0</span>
+                                        <span class="duration-total-unit">Total Days</span>
+                                    </div>
+                                    <div class="duration-total-item">
+                                        <span class="duration-total-value" id="duration-total-hours">0</span>
+                                        <span class="duration-total-unit">Total Hours</span>
+                                    </div>
+                                    <div class="duration-total-item">
+                                        <span class="duration-total-value" id="duration-total-minutes">0</span>
+                                        <span class="duration-total-unit">Total Minutes</span>
+                                    </div>
+                                    <div class="duration-total-item">
+                                        <span class="duration-total-value" id="duration-business-days">0</span>
+                                        <span class="duration-total-unit">Business Days</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="duration-percentages">
+                                    <div class="percentage-item">
+                                        <span class="percentage-value" id="duration-percent-year">0%</span>
+                                        <span class="percentage-unit">of a Year</span>
+                                    </div>
+                                    <div class="percentage-item">
+                                        <span class="percentage-value" id="duration-percent-decade">0%</span>
+                                        <span class="percentage-unit">of a Decade</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="actions">
+                        <button class="btn btn--primary" onclick="copyResults('duration')">Copy Results</button>
+                        <button class="btn btn--secondary" onclick="clearCalculator('duration')">Clear</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Price Calculator -->
+            <section class="calculator" id="price-calculator">
+                <div class="calculator__header">
+                    <h2>Price Calculator</h2>
+                    <p>Calculate price based on time and hourly rate</p>
+                </div>
+                <div class="calculator__content">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label class="form-label" for="price-rate">Rate (Rs/hour)</label>
+                            <input type="number" id="price-rate" class="form-control" placeholder="Enter rate" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label class="form-label" for="price-hours">Hours</label>
+                            <input type="number" id="price-hours" class="form-control" placeholder="0" min="0">
+                        </div>
+                        <div class="input-group">
+                            <label class="form-label" for="price-minutes">Minutes</label>
+                            <input type="number" id="price-minutes" class="form-control" placeholder="0" min="0" max="59">
+                        </div>
+                    </div>
+                    <div class="results-grid">
+                        <div class="result-card">
+                            <h3>Calculated Price</h3>
+                            <div class="price-display">
+                                <span class="result-label">Total Price:</span>
+                                <span class="result-value" id="price-result">Rs 0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <button class="btn btn--primary" onclick="copyResults('price')">Copy Results</button>
+                        <button class="btn btn--secondary" onclick="clearCalculator('price')">Clear</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3>About</h3>
+                    <p>Professional date and time calculators with accurate calculations, handling leap years, different month lengths, and timezone considerations.</p>
+                </div>
+                <div class="footer__section">
+                    <h3>Features</h3>
+                    <ul>
+                        <li>Real-time calculations</li>
+                        <li>Copy to clipboard</li>
+                        <li>Business day calculations</li>
+                        <li>Comprehensive breakdowns</li>
+                    </ul>
+                </div>
+                <div class="footer__section">
+                    <h3>Examples</h3>
+                    <ul>
+                        <li>Age calculation with precision</li>
+                        <li>Project timeline planning</li>
+                        <li>Event countdown timers</li>
+                        <li>Duration analysis</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>&copy; 2025 Date & Time Calculator Suite. Professional calculations for all your temporal needs.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
